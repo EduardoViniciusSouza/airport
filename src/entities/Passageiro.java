@@ -1,18 +1,27 @@
 package entities;
 
+import entities.enums.Visto;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 public class Passageiro {
     private String nome;
-    private String email;
-    private String cpf;
-    private Bagagens [] bagagens;
+    private String numeroDePassaporte;
+    private Visto visto;
+    private List<Bagagem> bagagens;
 
-    public Passageiro(String nome, String email, String cpf, Bagagens [] bagagens) {
+    public Passageiro(String nome, String numeroDePassaporte, Visto visto) {
         this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-        this.bagagens = bagagens;
+        this.numeroDePassaporte = numeroDePassaporte;
+        this.visto = visto;
+        this.bagagens = new ArrayList<>();
+    }
+
+    public void addBagagem(Bagagem bagagem) {
+        bagagens.add(bagagem);
     }
 
     public String getNome() {
@@ -23,29 +32,32 @@ public class Passageiro {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNumeroDePassaporte() {
+        return numeroDePassaporte;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNumeroDePassaporte(String numeroDePassaporte) {
+        this.numeroDePassaporte = numeroDePassaporte;
     }
 
-    public String getCpf() {
-        return cpf;
+    public Visto getVisto() {
+        return visto;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-
-
+    public void setVisto(Visto visto) {
+        this.visto = visto;
+    }
+    
+    public Collection<Bagagem> getBagagens(){
+        return bagagens;
     }
 
     @Override
     public String toString() {
-        return "Passageiro{" +
-                "nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf;
+        return "Nome do Passageiro: " + getNome() + System.lineSeparator() +
+                "Número de Passaporte: " + getNumeroDePassaporte() + System.lineSeparator() +
+                "Situação do Visto: " + getVisto() + System.lineSeparator() +
+                "Bagagens cadastradas: "+ System.lineSeparator() + getBagagens();
     }
 }
+

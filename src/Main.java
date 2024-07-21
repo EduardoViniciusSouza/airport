@@ -1,8 +1,17 @@
+import entities.Bagagem;
 import entities.Passageiro;
+import entities.enums.TipoBagagem;
+import entities.enums.Visto;
 
 public class Main {
     public static void main(String[] args) {
-        Passageiro passageiro = new Passageiro("eduardo", "amoamaria@email.com", "0321030210312");
+        Bagagem bagagem = new Bagagem(10.0, TipoBagagem.CIVIL, "Panamá");
+        Bagagem bagagem2 = new Bagagem(5.0, TipoBagagem.CIVIL, "Panamá");
+
+        Passageiro passageiro = new Passageiro("Eduardo", "101029", Visto.APROVADO);
+        passageiro.addBagagem(bagagem);
+        passageiro.addBagagem(bagagem2);
+
         System.out.println(passageiro);
     }
 }
